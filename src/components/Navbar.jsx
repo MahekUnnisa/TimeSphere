@@ -1,5 +1,6 @@
 import React from 'react';
 import '../index.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -12,10 +13,10 @@ const Navbar = () => {
                     <li>
                         <ul className="flex space-x-4">
                             <li className='text-xl hover:text-fuchsia-950 px-4 cursor-pointer'>
-                                <a href="/">Home</a>
+                                <Link to="/">Home</Link>
                             </li>
                             <li className='text-xl hover:text-fuchsia-950 px-4 cursor-pointer'>
-                                <a href="/news">News</a>
+                                <Link to="/news">News</Link>
                             </li>
                         </ul>
                     </li>

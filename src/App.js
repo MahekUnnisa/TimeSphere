@@ -1,13 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
-import Login from './components/Login'
-import Home from './containers/Home'
+import { Home, Feed } from './containers'
+import { Login, Category } from './components'
 import React from 'react'
 
 const App = () => {
     return (
         <Routes>
-            <Route path="login" element={<Login />} />
             <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/news" element={<Feed />} />
+            <Route path="/news/:category" element={<Category />} />
         </Routes>
     )
 }

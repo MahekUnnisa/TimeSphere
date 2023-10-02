@@ -2,23 +2,25 @@ import { Sidebar, Navbar, Article } from '../components';
 import React, { useEffect, useState } from 'react';
 import { getNewsFeed } from '../api/getNews';
 import getDate from '../utils/dates';
+import { useParams } from 'react-router-dom';
 
-const Search = (props) => {
-    const query = props.query;
+const Category = () => {
+    const { category } = useParams();
     const [news, setNews] = useState(null);
+
     useEffect(() => {
         const from = getDate();
         const fetchedData = async () => {
-            const data = await getNewsFeed(from, query);
+            const data = await getNewsFeed(from, category);
             const articles = data.articles;
             const filteredNews = articles.filter((item, index) => index !== 0);
 
             setNews(filteredNews);
 
-            localStorage.setItem(query, JSON.stringify(filteredNews));
+            localStorage.setItem(category, JSON.stringify(filteredNews));
         };
         fetchedData();
-    }, [query])
+    }, [category])
 
     return (
         <>
@@ -34,7 +36,7 @@ const Search = (props) => {
                                 ))}
                             </>
                         ) : (
-                            <p>No Results!</p>
+                            <p>Loading...</p>
                         )}
                     </div>
                 </div>
@@ -43,4 +45,4 @@ const Search = (props) => {
     );
 }
 
-export default Search
+export default Category

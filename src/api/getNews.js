@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-export async function getNewsFeed(from) {
+export async function getNewsFeed(from, searchTerm) {
     const version = process.env.REACT_APP_API_VERSION
     const apiUrl = `https://newsapi.org/${version}/everything`
-    const country = process.env.REACT_APP_NEWS_COUNTRY;
     from = '2023-09-30';
 
     try {
@@ -12,7 +11,7 @@ export async function getNewsFeed(from) {
                 params: {
                     sortBy: 'popularity',
                     pageSize: 10,
-                    q: 'beauty',
+                    q: searchTerm,    
                     language: 'en',
                     from: from,
                     apiKey: process.env.REACT_APP_NEWS_API_KEY,
