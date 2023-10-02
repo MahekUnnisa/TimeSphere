@@ -1,3 +1,5 @@
+![image](https://github.com/MahekUnnisa/TimeSphere/assets/76068726/ecb2f30a-fa83-491f-bd49-5b95b796afae)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
