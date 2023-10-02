@@ -2,9 +2,10 @@ import { Sidebar, Navbar, Article } from '../components';
 import React, { useEffect, useState } from 'react';
 import { getNewsFeed } from '../api/getNews';
 import getDate from '../utils/dates';
+import { useParams } from 'react-router-dom';
 
-const Search = (props) => {
-    const query = props.query;
+const Search = () => {
+    const query = useParams();
     const [news, setNews] = useState(null);
     useEffect(() => {
         const from = getDate();
