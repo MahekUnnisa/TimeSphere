@@ -1,26 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { getTopHeadlines } from '../api/getNews';
+import TopHeadline from './TopHeadline';
 
 const Sidebar = () => {
+  const [headlines, setHeadlines] = useState(null);
+
+  useEffect(() => {
+    const localNews = JSON.parse(localStorage.getItem('topHeadlines'));
+
+    if (localNews) {
+      setHeadlines(localNews);
+    } else {
+      const fetchedData = async () => {
+        const data = await getTopHeadlines();
+        const articles = data.articles;
+        setHeadlines(articles);
+        localStorage.setItem('topHeadlines', JSON.stringify(articles));
+      };
+      fetchedData();
+    }
+  }, [])
   return (
-    <div className="w-1/5 bg-gray-200 p-4">
-      <ul className='px-6 py-4'>
-        <li className='py-1 text-left text-gray-900 font-medium text-xl'>
-          <Link className="hover:text-fuchsia-700" to="/news/business">Business</Link>
-        </li>
-        <li className='py-1 text-left text-gray-900 font-medium text-xl'>
-          <Link className="hover:text-fuchsia-700" to="/news/technology">Technology</Link>
-        </li>
-        <li className='py-1 text-left text-gray-900 font-medium text-xl'>
-          <Link className="hover:text-fuchsia-700" to="/news/beauty">Beauty</Link>
-        </li>
-        <li className='py-1 text-left text-gray-900 font-medium text-xl'>
-          <Link className="hover:text-fuchsia-700" to="/news/fashion">Fashion</Link>
-        </li>
-        <li className='py-1 text-left text-gray-900 font-medium text-xl'>
-          <Link className="hover:text-fuchsia-700" to="/news/politics">Politics</Link>
-        </li>
-      </ul> 
+    <div className="w-3/5 p-4 mx-5 my-2">
+      <h3 className='font-semibold text-xl text-center mb-3 mt-8 ms-1 text-gray-950'>Top Headlines</h3>
+      {headlines ? (
+        <>
+          {headlines.map((item) => (
+            <TopHeadline topHeadline={item} />
+          ))}
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   )
 }

@@ -12,11 +12,11 @@ const Article = (props) => {
       />
       <div className="p-4">
         <p>{item.author}</p>
-        <h2 className="text-lg font-semibold mb-2">{item.title}</h2>
-        <p className="text-gray-600">{item.description}</p>
+        <h2 className="text-base font-semibold mb-2">{item.title}</h2>
+        <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elite</p>
       </div>
       <div className="px-4 pt-1 pb-2">
-        <a target='_blank' rel='noreferrer' className="text-fuchsia-700 hover:text-slate-950" href={item.url}>Read more ...</a>
+        <a target='_blank' rel='noreferrer' className="text-fuchsia-700 hover:text-slate-950 text-sm" href={item.url}>Read more ...</a>
       </div>
     </div>
   )

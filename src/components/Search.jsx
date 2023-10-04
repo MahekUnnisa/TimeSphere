@@ -23,9 +23,7 @@ const Search = () => {
 
     return (
         <>
-            <Navbar />
             <div className="bg-gray-100 min-h-screen flex">
-                <Sidebar />
                 <div className="w-4/5 p-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {news ? (

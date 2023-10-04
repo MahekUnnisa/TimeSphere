@@ -1,44 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../index.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { IoMdAdd, IoMdSearch } from 'react-icons/io';
+import getData from '../utils/data';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({searchTerm, setSearchTerm}) => {
-    const navigate = useNavigate();
+const Navbar = () => {
+    const [links, setLinks] = useState(null)
+    useEffect(() => {
+        const data = getData();
+        setLinks(data);
+    }, [])
+
     return (
-        <div className="bg-gradient-to-r from-fuchsia-500 via-purple-500 to-pink-500">
+        <div className="bg-gray-200">
             <nav className="container mx-auto py-4 px-4">
-                <ul className="flex justify-between items-center text-white">
+                <ul className="flex justify-between items-center text-black">
                     <li>
-                        <a className="font-bold text-xl" href="/">TimeSphere</a>
-                    </li>
-                    <li>
-                        <div className="flex justify-start items-center w-full px-2 rounded-md bg-white border-none outline-none focus-within:shadow-sm">
-                            <IoMdSearch fontSize={21} className="ml-1" />
-                            <input
-                                type="text"
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                placeholder="Search"
-                                value={searchTerm}
-                                keydown={() => navigate('/search')}
-                                className="p-2 w-full bg-white outline-none"
-                            />
-                        </div>
+                        <a className="font-bold text-base me-4" href="/">TimeSphere</a>
+                        {links ? (
+                            links.map((item) => (
+                                <Link className="hover:text-fuchsia-700 active:text-fuchsia-800 mx-6 text-sm" key={item} to={`/news/${item}`}>
+                                    {item}
+                                </Link>
+                            ))
+                        ) : (
+                            <></>
+                        )}
                     </li>
                     <li>
                         <ul className="flex space-x-4">
-                            <li className='text-xl hover:text-fuchsia-950 px-4 cursor-pointer'>
-                                <Link to="/">Home</Link>
+                            <li className='text-sm hover:text-fuchsia-700 px-4 cursor-pointer'>
+                                <Link className='active:text-fuchsia-800' to="/">Home</Link>
                             </li>
-                            <li className='text-xl hover:text-fuchsia-950 px-4 cursor-pointer'>
-                                <Link to="/news">News</Link>
+                            <li className='text-sm hover:text-fuchsia-700 px-4 cursor-pointer'>
+                                <Link className='active:text-fuchsia-800' to="/news">News</Link>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
-
     );
 }
 export default Navbar;
