@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Sidebar, FeaturedArticle, Article } from '../components';
 import { getAllNews } from '../api/getNews';
 import getDate from '../utils/dates';
+import { v4 as uuidv4 } from 'uuid';
 
 const Feed = () => {
     const [news, setNews] = useState(null);
@@ -44,8 +45,8 @@ const Feed = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                         {news ? (
                             <>
-                                {news.map((item) => (
-                                    <Article key={item.id} item={item} />
+                                {news.map((item, i) => (
+                                    <Article key={uuidv4()} item={item} />
 
                                 ))}
                             </>

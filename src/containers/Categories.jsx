@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import getDate from '../utils/dates';
 import { getNewsFeed } from '../api/getNews';
-import { Article, FeaturedArticle } from '../components';
+import { Article } from '../components';
 import FeaturedCategory from '../components/FeaturedCategory';
 
 const Categories = (props) => {
@@ -21,7 +21,7 @@ const Categories = (props) => {
             localStorage.setItem('featured', JSON.stringify(data.articles[0]));
         };
         fetchedData();
-    }, [])
+    }, [props.category])
 
     return (
         <div className="mt-4">

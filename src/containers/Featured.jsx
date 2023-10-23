@@ -4,6 +4,7 @@ import { getAllNews } from '../api/getNews'
 import getDate from '../utils/dates';
 import Categories from './Categories';
 import getData from '../utils/data';
+import { v4 as uuidv4 } from 'uuid';
 
 const Featured = () => {
     const [news, setNews] = useState(null);
@@ -51,7 +52,7 @@ const Featured = () => {
                         {news ? (
                             <>
                                 {news.map((item, i) => (
-                                    <Article key={item.url+i} item={item} />
+                                    <Article key={uuidv4()} item={item} />
                                 ))}
                             </>
                         ) : (
@@ -61,7 +62,7 @@ const Featured = () => {
                     {categories ? (
                         <>
                             {categories.map((item, i) => (
-                                <Categories key={item.url+i} category={item} />
+                                <Categories key={uuidv4()} category={item} />
                             ))}
                         </>
                     ) : (

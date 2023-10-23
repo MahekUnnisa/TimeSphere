@@ -25,8 +25,8 @@ const Sidebar = () => {
       <h3 className='font-semibold text-xl text-center mb-3 mt-8 ms-1 text-gray-950'>Top Headlines</h3>
       {headlines ? (
         <>
-          {headlines.map((item) => (
-            <TopHeadline topHeadline={item} />
+          {headlines.map((item, i) => (
+            <TopHeadline key={item+i} topHeadline={item} />
           ))}
         </>
       ) : (
