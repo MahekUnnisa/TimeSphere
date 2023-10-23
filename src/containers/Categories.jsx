@@ -35,8 +35,8 @@ const Categories = (props) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 {category ? (
                     <>
-                        {category.map((item) => (
-                            <Article item={item} />
+                        {category.map((item, i) => (
+                            <Article key={item.url+i} item={item} />
                         ))}
                     </>
                 ) : (

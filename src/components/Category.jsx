@@ -28,7 +28,7 @@ const Category = () => {
                 setFeatured(data.articles[0]);
 
                 localStorage.setItem(category, JSON.stringify(filteredNews));
-                localStorage.setItem(category + 'Featured', JSON.stringify(filteredNews));
+                localStorage.setItem(category + 'Featured', JSON.stringify(data.articles[0]));
             };
 
             fetchedData();
@@ -49,8 +49,8 @@ const Category = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                         {news ? (
                             <>
-                                {news.map((item) => (
-                                    <Article item={item} />
+                                {news.map((item, i) => (
+                                    <Article key={item.url+i} item={item} />
                                 ))}
                             </>
                         ) : (

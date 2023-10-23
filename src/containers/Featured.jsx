@@ -50,8 +50,8 @@ const Featured = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                         {news ? (
                             <>
-                                {news.map((item) => (
-                                    <Article item={item} />
+                                {news.map((item, i) => (
+                                    <Article key={item.url+i} item={item} />
                                 ))}
                             </>
                         ) : (
@@ -60,8 +60,8 @@ const Featured = () => {
                     </div>
                     {categories ? (
                         <>
-                            {categories.map((item) => (
-                                <Categories category={item} />
+                            {categories.map((item, i) => (
+                                <Categories key={item.url+i} category={item} />
                             ))}
                         </>
                     ) : (

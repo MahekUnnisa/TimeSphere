@@ -5,7 +5,7 @@ const TopHeadline = (props) => {
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4 flex">
             <img
-                src={item.urlToImage}
+                src={item.image}
                 alt="Top Article"
                 className="w-1/4 h-auto"
             />

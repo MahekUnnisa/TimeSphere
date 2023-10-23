@@ -5,8 +5,8 @@ const FeaturedCategory = (props) => {
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4 flex">
             <img
-                src={item.urlToImage}
-                alt="Featured Article"
+                src={item.image}
+                alt="Featured Category Article"
                 className="w-1/3 h-auto"
             />
             <div className="flex-grow p-4">
@@ -19,7 +19,7 @@ const FeaturedCategory = (props) => {
                     className="text-fuchsia-700 hover:text-slate-950"
                     href={item.url}
                 >
-                    Read more ...
+                    Read more
                 </a>
             </div>
         </div>

@@ -45,7 +45,7 @@ const Feed = () => {
                         {news ? (
                             <>
                                 {news.map((item) => (
-                                    <Article item={item} />
+                                    <Article key={item.id} item={item} />
 
                                 ))}
                             </>

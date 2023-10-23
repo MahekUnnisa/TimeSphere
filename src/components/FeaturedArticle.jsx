@@ -5,7 +5,7 @@ const FeaturedArticle = (props) => {
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
             <img
-                src={item.urlToImage}
+                src={item.image}
                 alt="Featured Article"
                 className="w-full h-auto"
             />
